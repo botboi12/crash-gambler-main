@@ -1,0 +1,100 @@
+#top-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2rem;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  font-family: "Verlag A", "Verlag B", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  align-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+}
+
+#top-bar .title {
+  user-select: none;
+}
+
+#top-bar .tabs {
+  padding-left: 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.tabs a {
+  opacity: 50%;
+  margin-right: 1rem;
+  color: white;
+  font-size: 85%;
+}
+
+.tabs a:hover {
+  opacity: 25%;
+}
+
+.tabs i {
+  margin-right: 5px;
+}
+
+#top-bar .title h1 {
+  color: #e58929;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Courier New";
+}
+
+#top-bar .user-login {
+  margin-left: auto;
+  line-height: 40px;
+}
+
+#top-bar .user-login .balance-bits {
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+/** User logged in **/
+
+#top-bar .user-login .balance-bits {
+  display: inline-block;
+}
+
+#top-bar .user-login .balance-bits span {
+  line-height: 2rem;
+  color: black;
+}
+
+#top-bar .user-login .username {
+  display: inline-block;
+}
+@media handheld, only screen and (max-width: 767px) {
+  #top-bar .user-login .username {
+    /* TODO: figure out padding for mobile devices */
+  }
+}
+
+#top-bar .user-login .username a {
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+/** Not logged user **/
+
+#top-bar .user-login .register {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+#top-bar .user-login .login {
+  display: inline-block;
+}
+
+#top-bar .user-login .login a {
+  line-height: 2rem;
+}

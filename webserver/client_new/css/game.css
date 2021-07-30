@@ -1,0 +1,426 @@
+@import url("reset.css");
+@import url("general.css");
+@import url("topBar.css");
+@import url("chat.css");
+@import url("tabsSelector.css");
+@import url("gamesLog.css");
+@import url("controlsSelector.css");
+@import url("controls.css");
+@import url("strategy.css");
+@import url("betBar.css");
+@import url("chart.css");
+@import url("chartControls.css");
+@import url("players.css");
+@import url("settingsSelector.css");
+@import url("textDisplay.css");
+@import url("displaySettings.css");
+@import url("hotkeysSettings.css");
+@import url("chatSettings.css");
+@import url("loading.css");
+
+/**
+ * Header Background/ Widget Border Color: #292d35
+ * Widget Background Color: #181a1e
+ */
+
+html,
+body {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Game container
+   ========================================================================== */
+
+#game-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#game-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#game-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Message bar */
+#game-message-container {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  left: 0;
+  /* line-height: 1.2rem; */
+  /* bottom: calc(100% - 1.2rem); */
+  background-color: green;
+  line-height: 1.2rem;
+}
+
+#game-message-container.hide {
+  display: none;
+}
+
+#game-message-container > span {
+  overflow-y: hidden;
+  padding-right: 20px;
+  display: block;
+}
+
+#game-message-container span > span,
+#game-message-container span > a {
+  color: white;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+#game-message-container div {
+}
+
+/* Playable container (The game) */
+#game-playable-container {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#game-playable-container.show-message {
+  /* top: 1.2rem; */
+  top: 3.2rem;
+}
+
+#game-message-container .close-message {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+#game-message-container .close-message i {
+  color: white;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  padding-right: 0.2rem;
+}
+@media handheld, only screen and (max-width: 767px) {
+  #game-message-container .close-message i {
+    font-size: 1rem;
+  }
+}
+
+#game-message-container {
+  text-align: center;
+  z-index: 999;
+}
+
+#game-inner-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#game-left-container {
+  display: table;
+  height: 100%;
+  width: 65%;
+  position: relative;
+}
+
+#game-left-container.small-window {
+  width: 100%;
+}
+
+#game-right-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 65%;
+  right: 0;
+  border: 1px solid #ddd;
+  margin: 5px;
+}
+
+/* ==========================================================================
+   Tabs container
+   ========================================================================== */
+
+#tabs-container {
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  display: table-row;
+}
+
+/* ==========================================================================
+   Chart-Controls container
+   ========================================================================== */
+
+#chart-controls-container {
+  border-left: 1px solid #ddd;
+  min-height: 400px;
+  display: table-row;
+  height: 50%;
+}
+
+#chart-controls-row,
+#tabs-controls-row {
+  display: table-row;
+}
+
+#chart-controls-col,
+#tabs-controls-col {
+  display: table-cell;
+}
+
+#tabs-controls-col .cell-wrapper,
+#chart-controls-col .cell-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#chart-controls-col {
+  height: 45%;
+}
+
+#tabs-controls-col {
+  height: 55%;
+}
+
+/* Big Screens with small controls */
+@media handheld, only screen and (min-width: 767px) {
+  #chart-controls-col.small {
+    height: 10%;
+  }
+}
+/* Small Screens with small controls */
+@media handheld, only screen and (max-width: 767px) {
+  #chart-controls-col.small {
+    height: 20%;
+  }
+}
+
+/* Side nav */
+.hamburger {
+  cursor: pointer;
+  align-self: center;
+  margin-left: 0.5rem;
+}
+.hamburger div {
+  height: 2px;
+  width: 25px;
+  background: white;
+  margin: 6px 0;
+}
+
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1111; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #181a1e; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav a {
+  padding: 1rem 1rem 1rem 2rem;
+  text-decoration: none;
+  font-size: 1.25em;
+  display: block;
+}
+
+.sidenav hr {
+  border: 2px solid #292d35;
+  border-radius: 2px;
+  margin-right: 2rem;
+}
+
+/* Popups */
+.modal {
+  display: block;
+
+  /* Probably need media queries here */
+  width: 57.5rem;
+  max-width: 100%;
+
+  height: 90%;
+  /*   max-height: 90%; */
+
+  position: fixed;
+
+  z-index: 10001;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+
+  background: rgb(240, 238, 238);
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+  border-radius: 1rem;
+
+  animation: show 0.25s;
+
+  user-select: text;
+}
+
+@keyframes show {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    z-index: 10001;
+  }
+}
+
+.closed {
+  animation: hide 0.25s;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+@keyframes hide {
+  from {
+    z-index: 10001;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    z-index: -1;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 2rem;
+  padding-top: 3rem;
+  border: 0;
+  color: #181a1e;
+}
+
+.modal .close {
+  position: absolute;
+
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+
+  top: 10px;
+
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+
+  border: 0;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.investment-container .stats-table {
+  width: 100%;
+  line-height: 1.75;
+}
+
+.stats-table td:first-child {
+  opacity: 0.75;
+}
+
+.stats-table td:last-child {
+  text-align: right;
+}
+
+.investment-container .stats-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+}
+
+.stat .number {
+  font-size: 1.75rem;
+  line-height: 1.75;
+}
+
+.stat .sub {
+  opacity: 75%;
+}
+
+.investment-container li {
+  margin-bottom: 0.75rem;
+}
+
+.investment-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.investment-form .radios {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.investment-form #amount {
+  width: 100%;
+}
+
+.investment-form *[type="submit"] {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  background: #4caf50;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.investment-form *[type="submit"]:active {
+  opacity: 75%;
+}
+
+.investment-form .error {
+  color: red;
+  margin: 0.75rem 0;
+}

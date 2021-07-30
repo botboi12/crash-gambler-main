@@ -1,0 +1,74 @@
+{{##def.page_title = 'Stats' #}}
+<style>
+  .centered {
+    margin: 0 auto;
+  }
+  td:first-child {
+    text-align: left !important;
+  }
+  td:last-child {
+    text-align: right !important;
+  }
+  .fa {
+    width: 25px;
+    text-align: center;
+  }
+</style>
+{{##def.content:
+<div class="large-8 centered">
+  <table class="stats">
+    <tbody>
+      <tr>
+        <td> <i class="fa fa-users"></i> Users</td>
+        <td></td>
+        <td>{{=it.stats.users.count}}</td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-play"></i> Games Played</td>
+        <td></td>
+        <td>{{=it.stats.plays.count }}</td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-bank"></i> Bankroll</td>
+        <td></td>
+        <td>
+          {{#def.format: {n: it.stats.plays.total_bet - it.stats.plays.cashed_out - it.stats.plays.bonused + it.stats.bankroll_offset } }} satoshis
+        </td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-btc"></i> Wagered</td>
+        <td></td>
+        <td>{{#def.format: {n: it.stats.plays.total_bet } }} satoshis</td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-trophy"></i> Players' Profit</td>
+        <td>
+          {{= ((it.stats.plays.cashed_out + it.stats.plays.bonused) / it.stats.plays.total_bet * 100).toFixed(2) }}%
+        </td>
+        <td>
+          {{#def.format: {n: (it.stats.plays.cashed_out + it.stats.plays.bonused) } }} satoshis
+        </td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-credit-card"></i> Investors' Profit</td>
+        <td>
+          {{= (((it.stats.users.total_invested - it.stats.investments.sum) / it.stats.investments.sum * 100) || 0).toFixed(2) }}%
+        </td>
+        <td>
+          {{#def.format: {n: it.stats.users.total_invested - it.stats.investments.sum } }} satoshis
+        </td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-money"></i> Commission</td>
+        <td>
+          0.39%
+        </td>
+        <td>
+          {{#def.format: {n: it.stats.plays.total_bet * (0.39 / 100) } }} satoshis
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <small style="margin-left: 0.5rem">Generated {{! it.generated }}</small>
+</div>
+#}} {{#def.include('./template/main_old')}}
